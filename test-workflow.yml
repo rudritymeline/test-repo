@@ -1,21 +1,24 @@
-name: API workflow
-
+name: Workflow for Codecov
 on: [push, pull_request]
-
 jobs:
-  build:
+  run:
     runs-on: ubuntu-latest
-    name: Test python API
     steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-python@v2
-      with:
-        python-version: '3.10'
-    - name: Install requirements
-      run: pip install -r api/requirements.txt
-    - name: Run tests and collect coverage
-      run: pytest --cov=api.calculator --cov-report=xml
-    - name: Upload coverage reports to Codecov with GitHub Action
-      uses: codecov/codecov-action@v5
-      env:
-        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run tests and generate coverage report
+        run: pytest --cov=./ --cov-report=xml
+
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v5
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
