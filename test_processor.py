@@ -1,4 +1,3 @@
-# test_processor.py
 from processor import process_transaction
 
 def test_successful_transaction():
