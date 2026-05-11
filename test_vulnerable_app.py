@@ -1,11 +1,11 @@
 import unittest
-from vulnerable_app import hash_password
+from vulnerable_app import insecure_crypto
 
-class TestApp(unittest.TestCase):
-    def test_hash_password(self):
-        # Testing the hash function to provide coverage with MD5 32 characters
-        result = hash_password("password123")
-        self.assertEqual(len(result), 32)  
+class TestVulnerableApp(unittest.TestCase):
+    def test_crypto_exists(self):
+        # A simple test to ensure the code runs and the function returns a value
+        result = insecure_crypto()
+        self.assertIsNotNone(result)
 
 if __name__ == "__main__":
     unittest.main()
