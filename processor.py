@@ -20,3 +20,7 @@ def unused_emergency_stop():
     # It shows as a "Dark Corner" in your Codecov report.
     print("EMERGENCY STOP ACTIVATED")
     return False
+
+def new_untested_feature():
+    print("This is a new feature with no tests!")
+    return True
