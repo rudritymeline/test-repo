@@ -5,8 +5,7 @@ import hashlib
 SECRET_KEY = "super-secret-key-12345"
 
 def get_user_data(username):
-    # VULNERABILITY: SQL Injection (Direct string formatting)
-    # SonarQube should flag this as a critical vulnerability
+    # VULNERABILITY: SQL Injection (Direct string formatting) so SonarQube should flag this as a critical vulnerability
     db = sqlite3.connect("users.db")
     cursor = db.cursor()
     query = f"SELECT * FROM users WHERE username = '{username}'" 
